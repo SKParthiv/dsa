@@ -14,17 +14,21 @@ int main() {
     }
     int m;
     for (auto it = arr.begin(); it != arr.end(); it++) {
-        vector<int> slice(n, 0);
-
         auto it_for_min = min_it(arr, it);
-        swap(it, it_for_min);
+        auto it_holder = it;
+        swap(*it, *it_for_min);
+        it = it_holder;
+    }
+    for (auto it : arr) {
+            cout << it;
     }
 }
 
 
 vector<int>::iterator min_it(vector<int>& arr, vector<int>::iterator it) {
     int min = arr.at(0);
-    vector<int>::iterator it_min;
+    auto it_min = arr.begin();
+    auto it_given = it;
     while (it != arr.end()) {
         if (min > (*it)) {
             min = *it;
@@ -32,5 +36,6 @@ vector<int>::iterator min_it(vector<int>& arr, vector<int>::iterator it) {
         }
         it++;
     }
+    it = it_given;
     return it_min;
 }
