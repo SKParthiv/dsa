@@ -12,22 +12,20 @@ int main() {
         cin >> element;
         arr.push_back(element);
     }
-    int m;
     for (auto it = arr.begin(); it != arr.end(); it++) {
         auto it_for_min = min_it(arr, it);
         auto it_holder = it;
-        swap(*it, *it_for_min);
-        it = it_holder;
+        swap(*it_holder, *it_for_min);
     }
     for (auto it : arr) {
-            cout << it;
+            cout << it << " ";
     }
 }
 
 
 vector<int>::iterator min_it(vector<int>& arr, vector<int>::iterator it) {
-    int min = arr.at(0);
-    auto it_min = arr.begin();
+    int min = *it;
+    auto it_min = it;
     auto it_given = it;
     while (it != arr.end()) {
         if (min > (*it)) {
