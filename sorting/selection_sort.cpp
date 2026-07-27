@@ -2,11 +2,18 @@
 using namespace std;
 
 vector<int>::iterator min_it(vector<int>& arr, vector<int>::iterator it);
-
+void selection_sort(vector<int>& arr, int n);
 int main() {
     vector<int> arr;
     int n;
     cin >> n;
+    selection_sort(arr, n);
+    for (auto it : arr) {
+            cout << it << " ";
+    }
+}
+
+void selection_sort(vector<int>& arr, int n) {
     for (int i = 0; i < n; i++) {
         int element;
         cin >> element;
@@ -17,16 +24,11 @@ int main() {
         auto it_holder = it;
         swap(*it_holder, *it_for_min);
     }
-    for (auto it : arr) {
-            cout << it << " ";
-    }
 }
-
 
 vector<int>::iterator min_it(vector<int>& arr, vector<int>::iterator it) {
     int min = *it;
     auto it_min = it;
-    auto it_given = it;
     while (it != arr.end()) {
         if (min > (*it)) {
             min = *it;
@@ -34,6 +36,5 @@ vector<int>::iterator min_it(vector<int>& arr, vector<int>::iterator it) {
         }
         it++;
     }
-    it = it_given;
     return it_min;
 }
