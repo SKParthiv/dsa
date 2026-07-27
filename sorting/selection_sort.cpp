@@ -7,6 +7,12 @@ int main() {
     vector<int> arr;
     int n;
     cin >> n;
+    for (int i = 0; i < n; i++) {
+        int element;
+        cin >> element;
+        arr.push_back(element);
+    }
+
     selection_sort(arr, n);
     for (auto it : arr) {
             cout << it << " ";
@@ -14,12 +20,7 @@ int main() {
 }
 
 void selection_sort(vector<int>& arr, int n) {
-    for (int i = 0; i < n; i++) {
-        int element;
-        cin >> element;
-        arr.push_back(element);
-    }
-    for (auto it = arr.begin(); it != arr.end(); it++) {
+   for (auto it = arr.begin(); it != arr.end(); it++) {
         auto it_for_min = min_it(arr, it);
         auto it_holder = it;
         swap(*it_holder, *it_for_min);
